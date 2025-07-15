@@ -1,0 +1,85 @@
+{
+	// General Editor Settings
+	"editor.fontSize": 14,
+	"editor.lineHeight": 22,
+	"editor.tabSize": 2,
+	"editor.insertSpaces": true,
+	"editor.renderWhitespace": "all",
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": "explicit",
+		"source.fixAll.eslint": "explicit" // Only if using ESLint
+	},
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "biomejs.biome", // Fallback, overridden by Biome below
+
+	// Files and Encoding
+	"files.eol": "\n", // Use Unix-style line endings
+	"files.autoSave": "afterDelay",
+	"files.trimTrailingWhitespace": true,
+	"files.insertFinalNewline": true,
+
+	// TypeScript Specific Settings
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"typescript.tsdk": "node_modules/typescript/lib", // Points to your project's TypeScript version
+
+	// Tailwind CSS Specific Settings
+	"tailwindCSS.includeLanguages": {
+		"typescript": "javascript",
+		"typescriptreact": "javascript",
+		"javascript": "javascript",
+		"javascriptreact": "javascript",
+		"html": "html",
+		"css": "css"
+	},
+	"tailwindCSS.emmetCompletions": true,
+	"tailwindCSS.classAttributes": ["class", "className", "tw", "cva"], // Add any custom class props you use
+
+	// Biome Specific Settings
+	"editor.formatOnSaveMode": "file", // Recommended for Biome
+	"biome.lsp.bin": "./node_modules/@biomejs/biome/bin/biome", // Adjust if Biome is globally installed
+	"[javascript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	// Optional: Disable Prettier for languages handled by Biome if Prettier is installed globally
+	"[json]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[markdown]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+
+	// Prisma Specific Settings (often handled well by the extension defaults)
+	// "prisma.nativeEngine": true, // Enable if you encounter issues, might use native engine for better performance
+
+	// Terminal Settings (for Bun on Chromebook)
+	"terminal.integrated.defaultProfile.linux": "bash", // Or "zsh" if you use it
+	"terminal.integrated.profiles.linux": {
+		"bash": {
+			"path": "bash"
+		},
+		"zsh": {
+			"path": "zsh"
+		}
+	},
+	"terminal.integrated.env.linux": {
+		// Ensure Bun's bin directory is in your PATH for VS Code's integrated terminal
+		// This usually happens automatically if Bun is correctly installed and its path is added to your shell's rc file (.bashrc, .zshrc)
+		// If you're having issues, you might need to manually add it, e.g.:
+		// "PATH": "/home/youruser/.bun/bin:${env:PATH}"
+	}
+}

@@ -2,6 +2,8 @@
 dist/
 /build
 /out/
+/prisma/generated
+/src/lib/schema
 
 # dev
 .yarn/
