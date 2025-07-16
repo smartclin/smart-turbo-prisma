@@ -4,8 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
 	return {
 		name: "smart-clinic",
 		short_name: "smart-clinic",
-		description:
-			"my pwa app",
+		description: "my pwa app",
 		start_url: "/new",
 		display: "standalone",
 		background_color: "#ffffff",
