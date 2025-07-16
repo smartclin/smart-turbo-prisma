@@ -1,5 +1,6 @@
 import { getSession } from "@/lib/auth"; // your BetterAuth instance
 import { db } from "@/lib/db";
+import { AppointmentStatus } from "@/types/enums";
 import { processAppointments } from "@/types/helper";
 
 import { daysOfWeek } from "..";
@@ -74,7 +75,7 @@ export async function getDoctorDashboardStats() {
 
 		const sanitizedAppointments = appointments.map((app) => ({
 			...app,
-			status: app.status ?? "PENDING", // replace "PENDING" with your default AppointmentStatus value
+			status: app.status ?? AppointmentStatus.PENDING, // use enum for default AppointmentStatus value
 		}));
 		const { appointmentCounts, monthlyData } = await processAppointments(
 			sanitizedAppointments,

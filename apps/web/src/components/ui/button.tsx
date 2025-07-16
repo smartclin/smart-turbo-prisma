@@ -36,11 +36,17 @@ const buttonVariants = cva(
 	},
 );
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
-	VariantProps<typeof buttonVariants> & {
-		asChild?: boolean;
-		children: React.ReactNode;
-	};
+type ButtonProps =
+	| (ButtonHTMLAttributes<HTMLButtonElement> &
+			VariantProps<typeof buttonVariants> & {
+				asChild?: false;
+				children: React.ReactNode;
+			})
+	| (ButtonHTMLAttributes<HTMLButtonElement> &
+			VariantProps<typeof buttonVariants> & {
+				asChild: true;
+				children: ReactElement;
+			});
 
 function Button({
 	className,

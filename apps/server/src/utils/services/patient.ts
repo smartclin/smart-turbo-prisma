@@ -1,5 +1,5 @@
 import type { Patient } from "@prisma/client";
-
+import { AppointmentStatus } from "@prisma/client";
 import { db } from "@/lib/db";
 import { processAppointments } from "@/types/helper";
 
@@ -69,7 +69,7 @@ export async function getPatientDashboardStatistics(id: string) {
 
 		const sanitizedAppointments = appointments.map((app) => ({
 			...app,
-			status: app.status ?? "PENDING", // replace "PENDING" with your default AppointmentStatus value
+			status: app.status ?? AppointmentStatus.PENDING, // use enum for default AppointmentStatus value
 		}));
 
 		const { appointmentCounts, monthlyData } = await processAppointments(
@@ -297,4 +297,4 @@ export async function getAllPatients({
 	}
 }
 
-export { processAppointments, type ApiResponse, type PatientFullData };
+export { processAppointments, type PatientFullData };

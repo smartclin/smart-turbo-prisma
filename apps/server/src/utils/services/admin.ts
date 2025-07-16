@@ -57,7 +57,7 @@ export async function getAdminDashboardStats() {
 			.filter((a) => a.status !== null)
 			.map((a) => ({
 				...a,
-				status: a.status ?? "PENDING", // Replace "PENDING" with your default AppointmentStatus if needed
+				status: a.status ?? AppointmentStatus.PENDING, // Use enum constant instead of magic string
 			}));
 
 		const { appointmentCounts, monthlyData } =
