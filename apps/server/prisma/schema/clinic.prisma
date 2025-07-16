@@ -260,7 +260,7 @@ model VitalSigns {
     oxygenSaturation Int?
     weight           Float
     height           Float
-
+    
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }

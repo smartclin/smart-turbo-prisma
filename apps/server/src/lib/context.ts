@@ -1,4 +1,5 @@
 import type { NextRequest } from "next/server";
+import prisma from "prisma";
 import { auth } from "./auth";
 
 export async function createContext(req: NextRequest) {
@@ -7,6 +8,7 @@ export async function createContext(req: NextRequest) {
 	});
 	return {
 		session,
+		prisma,
 	};
 }
 

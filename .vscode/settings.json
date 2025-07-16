@@ -6,10 +6,10 @@
 	"editor.insertSpaces": true,
 	"editor.renderWhitespace": "all",
 	"editor.codeActionsOnSave": {
-		"source.organizeImports": "explicit",
-		"source.fixAll.eslint": "explicit" // Only if using ESLint
+		"source.biome": "explicit",
+		"source.fixAll.biome": "explicit"
 	},
-	"editor.formatOnSave": true,
+	"editor.formatOnSave": false,
 	"editor.defaultFormatter": "biomejs.biome", // Fallback, overridden by Biome below
 
 	// Files and Encoding
@@ -33,7 +33,14 @@
 	},
 	"tailwindCSS.emmetCompletions": true,
 	"tailwindCSS.classAttributes": ["class", "className", "tw", "cva"], // Add any custom class props you use
-
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true,
+		"**/.turbo": true
+	},
 	// Biome Specific Settings
 	"editor.formatOnSaveMode": "file", // Recommended for Biome
 	"biome.lsp.bin": "./node_modules/@biomejs/biome/bin/biome", // Adjust if Biome is globally installed

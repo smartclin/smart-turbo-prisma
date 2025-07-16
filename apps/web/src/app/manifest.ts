@@ -2,13 +2,13 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
 	return {
-		name: "smart-clinic",
-		short_name: "smart-clinic",
-		description: "my pwa app",
-		start_url: "/new",
+		name: "Smart Pediatric Clinic",
+		short_name: "Smart Clinic",
+		description: "Modern pediatric clinic management and patient care app",
+		start_url: "/",
 		display: "standalone",
-		background_color: "#ffffff",
-		theme_color: "#000000",
+		background_color: "#e0f7fa", // light, pleasant background for pediatric theme
+		theme_color: "#0288d1",
 		icons: [
 			{
 				src: "/favicon/web-app-manifest-192x192.png",

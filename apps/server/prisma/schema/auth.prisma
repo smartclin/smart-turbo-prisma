@@ -1,3 +1,4 @@
+
 model User {
   id            String    @id @map("_id")
   name          String
@@ -11,6 +12,13 @@ model User {
   Patient       Patient[]
   Doctor        Doctor[]
   Staff         Staff[]
+
+  role       String?
+  banned     Boolean?
+  banReason  String?
+  banExpires DateTime?
+  firstName  String?
+  lastName   String?
 
   @@unique([email])
   @@map("user")
@@ -26,6 +34,8 @@ model Session {
   userAgent String?
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  impersonatedBy String?
 
   @@unique([token])
   @@map("session")
@@ -59,4 +69,13 @@ model Verification {
   updatedAt  DateTime?
 
   @@map("verification")
+}
+
+model RateLimit {
+  id          String  @id
+  key         String?
+  count       Int?
+  lastRequest BigInt?
+
+  @@map("rateLimit")
 }

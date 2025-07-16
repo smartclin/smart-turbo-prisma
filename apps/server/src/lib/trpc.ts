@@ -6,7 +6,15 @@ export const t = initTRPC.context<Context>().create();
 export const router = t.router;
 
 export const publicProcedure = t.procedure;
+const isAdmin = t.middleware(({ ctx, next }) => {
+	if (!ctx.session?.user || ctx.session.user.role !== "ADMIN") {
+		throw new TRPCError({ code: "FORBIDDEN", message: "Admin access only" });
+	}
+	return next();
+});
 
+// Admin protected procedure
+export const adminProcedure = t.procedure.use(isAdmin);
 export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
 	if (!ctx.session) {
 		throw new TRPCError({
