@@ -1,0 +1,47 @@
+{
+	"name": "Smart Clinic Dev",
+	"image": "mcr.microsoft.com/devcontainers/base:debian", // Lightweight base image
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "22",
+			"installTool": "bun"
+		},
+		"ghcr.io/devcontainers/features/postgresql:1": {
+			"version": "17",
+			"database": "smartdb",
+			"user": "drhazem",
+			"password": "HealthF24"
+		},
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/nvm:1": {
+			"nodeVersion": "22"
+		},
+		"ghcr.io/devcontainers/features/pnpm:1": {},
+		"ghcr.io/devcontainers/features/common-utils:1": {},
+		"ghcr.io/devcontainers/features/direnv:1": {}
+	},
+	"postCreateCommand": "bun install && bunx prisma generate && bun run build || true",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "zsh",
+				"editor.formatOnSave": true,
+				"files.exclude": {
+					"**/.next": true,
+					"**/node_modules": true
+				}
+			},
+			"extensions": [
+				"bradlc.vscode-tailwindcss",
+				"biomejs.biome",
+				"Prisma.prisma",
+				"meganrogge.template-string-converter",
+				"formulahendry.auto-rename-tag"
+			]
+		}
+	},
+	"mounts": [
+		"source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
+	],
+	"remoteUser": "root"
+}

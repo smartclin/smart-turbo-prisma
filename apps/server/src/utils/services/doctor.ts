@@ -24,7 +24,7 @@ export async function getDoctorDashboardStats() {
 		const [totalPatient, totalNurses, appointments, doctors] =
 			await Promise.all([
 				db.patient.count(),
-				db.staff.count({ where: { role: "NURSE" } }),
+				db.staff.count({ where: { role: "STAFF" } }),
 				db.appointment.findMany({
 					where: {
 						doctorId: userId ?? "N/A",
@@ -72,8 +72,13 @@ export async function getDoctorDashboardStats() {
 				}),
 			]);
 
-		const { appointmentCounts, monthlyData } =
-			await processAppointments(appointments);
+		const sanitizedAppointments = appointments.map((app) => ({
+			...app,
+			status: app.status ?? "PENDING", // replace "PENDING" with your default AppointmentStatus value
+		}));
+		const { appointmentCounts, monthlyData } = await processAppointments(
+			sanitizedAppointments,
+		);
 
 		const last5Records = appointments.slice(0, 5);
 		// const availableDoctors = doctors.slice(0, 5);

@@ -1,6 +1,7 @@
 // src/trpc/routers/appointment.ts
 // This file defines the tRPC procedures related to appointment data.
 
+import { AppointmentStatus } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod"; // Zod for input validation
 import {
@@ -18,8 +19,6 @@ import {
 	getAppointmentWithMedicalRecordsById,
 	getPatientAppointments,
 } from "@/utils/services/appointment"; // Adjust path if different
-import { AppointmentStatus } from "../../prisma/generated/client";
-
 // Import your tRPC setup (e.g., from src/trpc/init.ts)
 import { protectedProcedure, router } from "../lib/trpc";
 

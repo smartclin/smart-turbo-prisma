@@ -14,11 +14,8 @@ const globalForPrisma = globalThis as unknown as {
 };
 
 // Prevent multiple instances in dev
-const prisma = globalForPrisma.prisma ?? createClient();
+export const db = globalForPrisma.prisma ?? createClient();
 
 if (process.env.NODE_ENV !== "production") {
-	globalForPrisma.prisma = prisma;
+	globalForPrisma.prisma = db;
 }
-
-export { prisma };
-export default prisma;

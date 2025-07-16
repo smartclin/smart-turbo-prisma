@@ -1,5 +1,4 @@
 import { faker } from "@faker-js/faker";
-import prisma from ".";
 import {
 	AppointmentStatus,
 	Gender,
@@ -11,7 +10,8 @@ import {
 	Role, // Make sure Role is imported if used
 	ServiceCategory,
 	Status, // Make sure Status is imported if used
-} from "./generated/client";
+} from "@prisma/client";
+import prisma from ".";
 
 // Helper function to get random enum value
 function getRandomEnumValue<T extends Record<string, string>>(

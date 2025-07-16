@@ -13,7 +13,7 @@ export const geistMono = localFont({
 });
 
 export const satoshi = localFont({
-	src: "./fonts/Satoshi-Variable.ttf",
+	src: "./Satoshi-Variable.ttf",
 	variable: "--font-satoshi",
 	display: "swap",
 	weight: "500",

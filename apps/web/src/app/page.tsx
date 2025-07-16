@@ -150,11 +150,13 @@ export default function Home() {
 								<Link href={`/${session.user.role}`} passHref>
 									<Button
 										asChild
-										className="w-full transform rounded-full bg-primary-600 px-8 py-3 font-semibold text-lg text-white shadow-md transition-all hover:scale-105 hover:bg-primary-700 hover:shadow-lg sm:w-auto"
 										size="lg"
+										className="w-full rounded-full bg-primary-600 px-8 py-3 font-semibold text-lg text-white shadow-md transition-all hover:scale-105 hover:bg-primary-700 hover:shadow-lg sm:w-auto"
 									>
-										<span>Go to Dashboard</span>
-										<ArrowRight className="ml-2 h-5 w-5" />
+										<span className="flex items-center">
+											Go to Dashboard
+											<ArrowRight className="ml-2 h-5 w-5" />
+										</span>
 									</Button>
 								</Link>
 							) : (
@@ -162,18 +164,20 @@ export default function Home() {
 									<Link href="/login" passHref>
 										<Button
 											asChild
-											className="w-full transform rounded-full bg-primary-600 px-8 py-3 font-semibold text-lg text-white shadow-md transition-all hover:scale-105 hover:bg-primary-700 hover:shadow-lg sm:w-auto"
 											size="lg"
+											className="w-full rounded-full bg-primary-600 px-8 py-3 font-semibold text-lg text-white shadow-md transition-all hover:scale-105 hover:bg-primary-700 hover:shadow-lg sm:w-auto"
 										>
-											<span>Log In to Patient Portal</span>
-											<ArrowRight className="ml-2 h-5 w-5" />
+											<span className="flex items-center">
+												Log In to Patient Portal
+												<ArrowRight className="ml-2 h-5 w-5" />
+											</span>
 										</Button>
 									</Link>
 									<Link href="/register" passHref>
 										<Button
-											className="w-full transform rounded-full border-primary-600 px-8 py-3 font-semibold text-lg text-primary-600 shadow-md transition-all hover:scale-105 hover:bg-primary-50 hover:shadow-lg sm:w-auto dark:hover:bg-gray-700"
 											size="lg"
 											variant="outline"
+											className="w-full rounded-full border-primary-600 px-8 py-3 font-semibold text-lg text-primary-600 shadow-md transition-all hover:scale-105 hover:bg-primary-50 hover:shadow-lg sm:w-auto dark:hover:bg-gray-700"
 										>
 											New Patient Registration
 										</Button>

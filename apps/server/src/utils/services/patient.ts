@@ -38,7 +38,12 @@ export async function getPatientDashboardStatistics(id: string) {
 
 		const appointments = await db.appointment.findMany({
 			where: { patientId: data?.id },
-			include: {
+			select: {
+				id: true,
+				appointmentDate: true,
+				time: true,
+				status: true,
+				type: true,
 				doctor: {
 					select: {
 						id: true,
@@ -59,13 +64,18 @@ export async function getPatientDashboardStatistics(id: string) {
 					},
 				},
 			},
-
 			orderBy: { appointmentDate: "desc" },
 		});
 
-		const { appointmentCounts, monthlyData } =
-			await processAppointments(appointments);
-		const last5Records = appointments.slice(0, 5);
+		const sanitizedAppointments = appointments.map((app) => ({
+			...app,
+			status: app.status ?? "PENDING", // replace "PENDING" with your default AppointmentStatus value
+		}));
+
+		const { appointmentCounts, monthlyData } = await processAppointments(
+			sanitizedAppointments,
+		);
+		const last5Records = sanitizedAppointments.slice(0, 5);
 
 		const today = daysOfWeek[new Date().getDay()];
 
@@ -287,9 +297,4 @@ export async function getAllPatients({
 	}
 }
 
-export {
-	processAppointments,
-	type ApiResponse,
-	type PatientFullData,
-	type ApiResponse,
-};
+export { processAppointments, type ApiResponse, type PatientFullData };

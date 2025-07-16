@@ -33,6 +33,10 @@
 	},
 	"packageManager": "bun@1.2.18",
 	"trustedDependencies": [
-		"@tailwindcss/oxide"
+		"@prisma/client",
+		"@prisma/engines",
+		"@tailwindcss/oxide",
+		"prisma",
+		"sharp"
 	]
 }

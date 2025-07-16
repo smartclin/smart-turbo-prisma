@@ -1,3 +1,4 @@
+import type { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 
 export async function getAppointmentById(id: number) {
@@ -200,7 +201,7 @@ export async function getAppointmentWithMedicalRecordsById(id: number) {
 					include: {
 						diagnosis: true,
 						labTest: true,
-						vital_signs: true,
+						vitalSigns: true,
 					},
 				},
 			},

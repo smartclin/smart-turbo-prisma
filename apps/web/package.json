@@ -6,6 +6,8 @@
 		"dev": "next dev --turbopack --port=3001",
 		"build": "next build",
 		"start": "next start",
+		"check": "bunx biome check --write ",
+
 		"lint": "next lint"
 	},
 	"dependencies": {

@@ -53,8 +53,15 @@ export async function getAdminDashboardStats() {
 				}),
 			]);
 
+		const validAppointments = appointments
+			.filter((a) => a.status !== null)
+			.map((a) => ({
+				...a,
+				status: a.status ?? "PENDING", // Replace "PENDING" with your default AppointmentStatus if needed
+			}));
+
 		const { appointmentCounts, monthlyData } =
-			await processAppointments(appointments);
+			await processAppointments(validAppointments);
 
 		const last5Records = appointments.slice(0, 5);
 
